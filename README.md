@@ -22,6 +22,8 @@ You can use any virtual environment tool for python. Here we are using Virtalenv
 Get the Portuguese law as a series of `.txt` files
 (a law document per file) and copy them over to `data/text/`.
 
+Some sample data is already provided in `data/sample`
+
 ### Execute
 
 To see the regex applied to the law files you run the following
