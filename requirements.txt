@@ -1,0 +1,5 @@
+nltk
+pymysql
+configparser
+requests
+pandoc
