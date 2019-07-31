@@ -64,9 +64,9 @@ id_lei = "(?:[\d+\-\w]+(?:/[\d+\-\w]+)+)"
 
 # diario da republica
 diario = "Diário d(?:o|a) (?:Governo|República)"
-serie = "((?:1|2).ª (?:Série|série|s.))|(?:(?:Série|serie|s.)(?:-B)? ((?:1|I|2|II)(?:-(?:A|B))?))"
+serie = "(?:(?:1|2).ª (?:Série|série|s.))|(?:(?:Série|serie|s.) ((?:1|I|2|II)(?:\-(?:A|B))?))"
 suplemento = "1º Suplemento" # FIXME completar
-id_diario = "(%s|\w*)" % id_lei # diario tambem pode ser referido como [nº] ou "[nº]/[ano]"
+id_diario = "(%s|\w+)" % id_lei # diario tambem pode ser referido como [nº] ou "[nº]/[ano]"
 
 # documentos EU
 orgaos_europeus = '(' + '|'.join([
@@ -83,7 +83,7 @@ orgao_europeu = "(?P<orgao_europeu>,? %s(?:(?:,? %s)|(?: e %s))*)" % \
 regexs = [
     tipo_de_lei + " n.º " + id_lei + data,
     tipo_de_lei_eu + " (?:n.º )?" + id_lei + orgao_europeu + data,
-    diario + "(?:,? (?:(?:"+suplemento+")|(?:"+serie+")|(?:n.º "+id_diario+")|" + data + "))+",
+    diario + "(?:,? (?:(?:"+suplemento+")|(?:"+serie+")|(?:n.º "+id_diario+")+"+data+"))+",
     "Constituição"
 ]
 
