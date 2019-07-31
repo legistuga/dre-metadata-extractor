@@ -33,3 +33,8 @@ To see the regex applied to the law files you run the following
 # only the links. By doing so, pandoc adds the missing parts
 cat data/texto/[law-id].txt | python ./extractor.py | pandoc -s -f html -t html > /tmp/$(basename $1).html
 ```
+
+## TODO
+
+* Detetar documentos das nações unidas:
+    `Resolução A/RES/68/262, adotada pela Assembleia Geral das Nações Unidas` (no `Aviso n.º 114/2016`)
