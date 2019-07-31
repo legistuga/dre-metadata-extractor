@@ -20,7 +20,7 @@ root.setLevel(logging.DEBUG)
 # url de pesquisa de lei no dre.pt ("%s" é onde ficarão os temos de pesquisa)
 law_search_url = "https://dre.pt/web/guest/pesquisa/-/search/488789/details/normal?q=%s"
 
-# expressões regulares para identificar referências a leis
+# expressões regulares para identificar referências a leis nacionais
 tipo_de_lei = '(' + '|'.join([
     'Assento',
     'Aviso',
@@ -40,12 +40,18 @@ tipo_de_lei = '(' + '|'.join([
     'Parecer',
     'Portaria',
     'Rectificação', # TODO check
-    'Regulamento \(CE\)',
-    'Regulamento de Execução \(UE\)'
     'Resolução',
     'Resolução da Assembleia da República',
     'Resoluções da Assembleia Legislativa das Regiões Autónomas', # TODO check
     'Resolução do Conselho de Ministros',
+]) + ')'
+
+# expressões regulares para identificar referências a leis europeias
+tipo_de_lei_eu = '(' + '|'.join([
+    'Regulamento \(CE\)',
+    'Regulamento \(UE\)',
+    'Regulamento de Execução \(UE\)',
+    'Regulamento Delegado \(UE\)'
 ]) + ')'
 
 # data publicação da lei
@@ -60,11 +66,24 @@ id_lei = "(?:[\d+\-\w]+(?:/[\d+\-\w]+)+)"
 diario = "Diário d(?:o|a) (?:Governo|República)"
 serie = "((?:1|2).ª (?:Série|série|s.))|(?:(?:Série|serie|s.)(?:-B)? ((?:1|I|2|II)(?:-(?:A|B))?))"
 suplemento = "1º Suplemento" # FIXME completar
+id_diario = "(%s|\w*)" % id_lei # diario tambem pode ser referido como [nº] ou "[nº]/[ano]"
+
+# documentos EU
+orgaos_europeus = '(' + '|'.join([
+    'da Comissão', # comissão europeia
+    'do Conselho', # conselho europeu
+    'do Parlamento Europeu'
+]) + ')'
+# regex para referencias aos orgãos da UE, por exemplo:
+#      do Parlamento Europeu e do Conselho
+#      da Comissão
+orgao_europeu = "(?P<orgao_europeu>,? %s(?:(?:,? %s)|(?: e %s))*)" % \
+                 (orgaos_europeus, orgaos_europeus, orgaos_europeus)
 
 regexs = [
     tipo_de_lei + " n.º " + id_lei + data,
-    tipo_de_lei_eu + " (?:n.º )?" + id_lei + data,
-    diario + "(?:,? (?:(?:"+suplemento+")|(?:"+serie+")|(?:n.º "+id_lei+")|" + data + "))+",
+    tipo_de_lei_eu + " (?:n.º )?" + id_lei + orgao_europeu + data,
+    diario + "(?:,? (?:(?:"+suplemento+")|(?:"+serie+")|(?:n.º "+id_diario+")|" + data + "))+",
     "Constituição"
 ]
 
