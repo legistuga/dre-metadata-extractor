@@ -38,3 +38,7 @@ cat data/texto/[law-id].txt | python ./extractor.py | pandoc -s -f html -t html 
 
 * Detetar documentos das nações unidas:
     `Resolução A/RES/68/262, adotada pela Assembleia Geral das Nações Unidas` (no `Aviso n.º 114/2016`)
+* Melhorar deteção de id_lei para:
+
+  * Detetar leis antigas:
+      `Decreto-Lei n.º 35717, de 24 de junho de 1946` (nao é do fomato `X/Y`) (no Decreto-Lei n.º 82/2016)
