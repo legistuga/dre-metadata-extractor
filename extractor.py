@@ -44,7 +44,7 @@ tipo_de_lei = '(' + '|'.join([
     'Portaria',
     'Rectificação', # TODO check
     'Resolução',
-    'Resolução da Assembleia da República',
+    'Resolução da Assembleia da Rep(?:ú|u)blica', # "u" em vez de "ú" é comum
     'Resoluções da Assembleia Legislativa das Regiões Autónomas', # TODO check
     'Resolução da Assembleia Legislativa da Região Autónoma (dos Açores|da Madeira)',
     'Resolução do Conselho de Ministros',
