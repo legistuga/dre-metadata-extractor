@@ -90,7 +90,7 @@ regexs = [
     tipo_de_lei + " n.º " + id_lei + data,
     tipo_de_lei_eu + " (?:n.º )?" + id_lei + "(?:"+ orgao_europeu+"|"+ data + ")*",
     diario + "(?:(?:,? (?:(?:"+suplemento+")|(?:"+serie+")|(?:n.º "+id_diario+"))|("+data+")))+",
-    "Constituição"
+    "Constituição( da República Portuguesa)?"
 ]
 
 def passage_add_links_multiple(text):
