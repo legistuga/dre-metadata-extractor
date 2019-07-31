@@ -88,8 +88,8 @@ orgao_europeu = "(?P<orgao_europeu>,? %s(?:(?:,? %s)|(?: e %s))*)" % \
 
 regexs = [
     tipo_de_lei + " n.º " + id_lei + data,
-    tipo_de_lei_eu + " (?:n.º )?" + id_lei + orgao_europeu + data,
-    diario + "(?:,? (?:(?:"+suplemento+")|(?:"+serie+")|(?:n.º "+id_diario+")+"+data+"))+",
+    tipo_de_lei_eu + " (?:n.º )?" + id_lei + "(?:"+ orgao_europeu+"|"+ data + ")*",
+    diario + "(?:(?:,? (?:(?:"+suplemento+")|(?:"+serie+")|(?:n.º "+id_diario+"))|("+data+")))+",
     "Constituição"
 ]
 
