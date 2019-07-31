@@ -22,9 +22,11 @@ law_search_url = "https://dre.pt/web/guest/pesquisa/-/search/basic?q=%s"
 
 # expressões regulares para identificar referências a leis nacionais
 tipo_de_lei = '(' + '|'.join([
+    'Acórdão do Supremo Tribunal de Justiça',
     'Assento',
     'Aviso',
     'Circular',
+    'Declaração de Retificação',
     'Decreto',
     'Decreto do Presidente da República',
     'Decreto dos Representantes da República para as Regiões Autónomas', # TODO check
@@ -37,17 +39,20 @@ tipo_de_lei = '(' + '|'.join([
     'Lei',
     'Lei Constitucional',
     'Lei Orgânica',
+    'Nota',
     'Parecer',
     'Portaria',
     'Rectificação', # TODO check
     'Resolução',
     'Resolução da Assembleia da República',
     'Resoluções da Assembleia Legislativa das Regiões Autónomas', # TODO check
+    'Resolução da Assembleia Legislativa da Região Autónoma (dos Açores|da Madeira)',
     'Resolução do Conselho de Ministros',
 ]) + ')'
 
 # expressões regulares para identificar referências a leis europeias
 tipo_de_lei_eu = '(' + '|'.join([
+    'Diretiva',
     'Regulamento \(CE\)',
     'Regulamento \(UE\)',
     'Regulamento de Execução \(UE\)',
