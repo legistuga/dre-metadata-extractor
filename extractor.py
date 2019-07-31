@@ -18,7 +18,7 @@ root = logging.getLogger()
 root.setLevel(logging.DEBUG)
 
 # url de pesquisa de lei no dre.pt ("%s" é onde ficarão os temos de pesquisa)
-law_search_url = "https://dre.pt/web/guest/pesquisa/-/search/488789/details/normal?q=%s"
+law_search_url = "https://dre.pt/web/guest/pesquisa/-/search/basic?q=%s"
 
 # expressões regulares para identificar referências a leis nacionais
 tipo_de_lei = '(' + '|'.join([
