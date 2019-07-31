@@ -65,13 +65,14 @@ data_completa = "(?:(?:\d+ de (?:"+meses+")(?: de \d+)?)|(?:\d+\-\d+\-\d+))"
 data = "(?:,? (?:(?:de|em) " + data_completa + "))*"
 
 # identificador da lei (ex: 63/2017)
-id_lei = "(?:[\d+\-\w]+(?:/[\d+\-\w]+)+)"
+id_lei = "(?:[\d\-\w]+(?:/[\d\+\-\w]+)+)" # FIXME estranhamente nao deteta leis
+# do tipo "Decreto-Lei n.º 35717"
 
 # diario da republica
 diario = "Diário d(?:o|a) (?:Governo|República)"
 serie = "(?:(?:1|2).ª (?:Série|série|s.))|(?:(?:Série|serie|s.) ((?:1|I|2|II)(?:\-(?:A|B))?))"
 suplemento = "1º Suplemento" # FIXME completar
-id_diario = "(%s|\w+)" % id_lei # diario tambem pode ser referido como [nº] ou "[nº]/[ano]"
+id_diario = "(%s|\d+)" % id_lei # diario tambem pode ser referido como [nº] ou "[nº]/[ano]"
 
 # documentos EU
 orgaos_europeus = '(' + '|'.join([
