@@ -51,6 +51,7 @@ tipo_de_lei = '(' + '|'.join([
 # data publicação da lei
 meses = "janeiro|fevereiro|março|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro"
 data_completa = "(?:(?:\d+ de (?:"+meses+")(?: de \d+)?)|(?:\d+\-\d+\-\d+))"
+data = "(?:,? (?:(?:de|em) " + data_completa + "))*"
 
 # identificador da lei (ex: 63/2017)
 id_lei = "(?:[\d+\-\w]+(?:/[\d+\-\w]+)+)"
@@ -61,8 +62,9 @@ serie = "((?:1|2).ª (?:Série|série|s.))|(?:(?:Série|serie|s.)(?:-B)? ((?:1|I
 suplemento = "1º Suplemento" # FIXME completar
 
 regexs = [
-    tipo_de_lei + " n.º " + id_lei + "(?:,? (?:(?:de|em) " + data_completa + "))*",
-    diario + "(?:,? (?:(?:"+suplemento+")|(?:"+serie+")|(?:n.º "+id_lei+")|(?:de "+data_completa+")))+",
+    tipo_de_lei + " n.º " + id_lei + data,
+    tipo_de_lei_eu + " (?:n.º )?" + id_lei + data,
+    diario + "(?:,? (?:(?:"+suplemento+")|(?:"+serie+")|(?:n.º "+id_lei+")|" + data + "))+",
     "Constituição"
 ]
 
