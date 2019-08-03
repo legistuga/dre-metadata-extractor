@@ -26,18 +26,22 @@ Some sample data is already provided in `data/sample`
 
 ### Execute
 
-To see the regex applied to the law files you run the following
+The program `extractor.py` reads from the `stdin` and outputs to the `stdout`.
+So to use it we read the law file into it and write it to a file.
 
 ``` bash
 # we are using pandoc because extractor.py does not add the html header and encoding
 # only the links. By doing so, pandoc adds the missing parts
-cat data/texto/[law-id].txt | python ./extractor.py | pandoc -s -f html -t html > /tmp/$(basename $1).html
+cat data/texto/[law-id].txt | python ./extractor.py | pandoc -s -f markdown -t html > /tmp/$(basename $1).html
 ```
+
+to view the file you just open `/tmp/[law-id].txt` in a browser.
 
 ## TODO
 
 * Detetar documentos das nações unidas:
     `Resolução A/RES/68/262, adotada pela Assembleia Geral das Nações Unidas` (no `Aviso n.º 114/2016`)
+
 * Melhorar deteção de id_lei para:
 
   * Detetar leis antigas:
